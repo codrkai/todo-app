@@ -4,7 +4,7 @@ import { useState } from "react"
 import { signIn, signOut, useSession } from "next-auth/react"
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import { v4 } from "uuid"
-import { insertItem, deleteItem, updateItem, getItems, createUsersTable } from "@/lib/actions"
+import { insertItem, deleteItem, updateItem, getItems } from "@/lib/actions"
 
 export default function Home() {
   const [todo, setTodo] = useState([])
