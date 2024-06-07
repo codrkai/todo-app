@@ -128,7 +128,7 @@ export default function Home() {
                 <button onClick={() => signIn()} type="button" className="rounded-3xl hover:ring-2 hover:ring-white hover:ring-offset-2 hover:ring-offset-gray-400">
                     <span className="absolute -inset-1.5"></span>
                     <span className="sr-only">Open profile menu</span>
-                    <Image className="rounded-3xl w-16 h-13" src={auth.image} width="16" height="13" alt="profile" />
+                    <Image className="rounded-3xl w-16 h-13" src={auth.image} width={16} height={13} alt="profile" />
                 </button>
               </div>
 
