@@ -4,6 +4,12 @@ import GoogleProvider from "next-auth/providers/google"
 import { supabase } from "@/lib/db"
 
 const authOptions = {
+    // theme: {
+    //     colorScheme: "auto", // "auto" | "dark" | "light"
+    //     brandColor: "", // Hex color code
+    //     logo: "", // Absolute URL to image
+    //     buttonText: "" // Hex color code
+    // },
     session: {strategy: 'jwt'},
     secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
