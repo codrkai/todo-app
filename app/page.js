@@ -1,5 +1,6 @@
 'use client'
 
+import Image from "next/image"
 import { useState } from "react"
 import { signIn, signOut, useSession } from "next-auth/react"
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
@@ -127,7 +128,7 @@ export default function Home() {
                 <button onClick={() => signIn()} type="button" className="rounded-3xl hover:ring-2 hover:ring-white hover:ring-offset-2 hover:ring-offset-gray-400">
                     <span className="absolute -inset-1.5"></span>
                     <span className="sr-only">Open profile menu</span>
-                    <img className="rounded-3xl w-16 h-13" src={auth.image} alt="profile" />
+                    <Image className="rounded-3xl w-16 h-13" src={auth.image} width="16" height="13" alt="profile" />
                 </button>
               </div>
 
