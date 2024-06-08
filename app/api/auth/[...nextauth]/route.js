@@ -2,6 +2,7 @@ import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google"
 import { supabase } from "@/lib/db"
+import { secret } from "@aws-amplify/backend"
 
 const authOptions = {
     // theme: {
@@ -11,7 +12,7 @@ const authOptions = {
     //     buttonText: "" // Hex color code
     // },
     session: {strategy: 'jwt'},
-    secret: process.env.NEXTAUTH_SECRET,
+    secret: secret('NEXTAUTH_SECRET'),
     callbacks: {
         async session({session}) {
             const { data, error } = await supabase.from('users').select('*').eq('email',session.user.email)
@@ -35,12 +36,12 @@ const authOptions = {
     providers: [
         GithubProvider({
             clientId: process.env.GITHUB_ID,
-            clientSecret: process.env.GITHUB_SECRET,
+            clientSecret: secret('GITHUB_SECRET'),
         }),
         
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            clientSecret: secret('GOOGLE_CLIENT_SECRET'),
         })
     ],
 }
