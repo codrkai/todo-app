@@ -15,6 +15,10 @@ const nextConfig = {
                 protocol: 'http',
                 hostname: 'www.gravatar.com',
             },
+            {
+                protocol: 'https',
+                hostname: 'images.unsplash.com',
+            },
         ],
     },
 };
