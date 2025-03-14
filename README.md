@@ -13,8 +13,7 @@ npm run dev
 ```
 
 ##### RENAME .env.example TO .env.local
-    when deploying to Vercel or AWS, don't upload the .env file, 
-you will need to import environment variables into the Vercel/AWS hosting settings
+    when deploying to Vercel or AWS, don't upload the .env file, you will need to import environment variables into the Vercel/AWS hosting settings
 
 ##### NEXTAUTH_SECRET
     generate a secret key using this command:
