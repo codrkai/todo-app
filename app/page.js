@@ -18,7 +18,8 @@ export default function Home() {
     name: 'not signed in',
     email: null,
     image: "http://www.gravatar.com/avatar/?d=mp",
-    bgImage: "bg-gray-800"
+    bgImage: "bg-[url('https://images.unsplash.com/photo-1489549132488-d00b7eee80f1?q=80&w=2187&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]",
+    // bgImage: "bg-gray-800"
   }
 
   if (status === 'authenticated') {
@@ -28,7 +29,7 @@ export default function Home() {
       name: "Signed in as " + session.user.name,
       email: session.user.email,
       image: session.user.image,
-      bgImage: "bg-[url('https://images.unsplash.com/photo-1489549132488-d00b7eee80f1?q=80&w=2187&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]"
+      bgImage: "bg-[url('https://images.unsplash.com/photo-1489549132488-d00b7eee80f1?q=80&w=2187&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]",
     }
 
     if (todo.length < 1) {
