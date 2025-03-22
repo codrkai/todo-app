@@ -1,9 +1,11 @@
 
-### Todo App with Supabase DB and Google Auth
+### Todo List App
 
 ##### NextJS v14
-##### Supabase
-##### Google Auth
+##### MongoDB (default)
+##### Supabase (optional)
+##### NextAuth
+##### Drag & Drop using react-beautiful-dnd
 
 ### Installation and Setup
 
@@ -23,16 +25,22 @@ npm run dev
 
 ##### GITHUB/GOOGLE KEYS
     Sign into your Github or Google account and navigate to the Developer Settings
+    Get your Client ID and Secret Keys, and set them in the .env file
 
-##### SUPABASE DATABASE
-    Sign into Supabase and set up your database. Get the Database URL and Service Role Key.
-    Database connection file is located in: /lib/db.js
+##### MONGODB IS THE DEFAULT DATABASE
+    /lib/db.js
+    /lib/actions.js
+    /app/api/auth/[...nextauth]/route.js
 
-##### DATABASE TABLES
-    users (id, email)
-    items (item_id, user_id, content)
+##### IF YOU WISH TO USE SUPABASE, USE/UPDATE THESE
+    /lib/supabase-db.js
+    /lib/supabase-actions.js
+    /app/api/auth/[...nextauth]/route.js
 
-    SQL CODES:
+    Sign into Supabase and get the Database URL and Service Role Key
+    Update the .env file
+
+##### SUPABASE TABLES (run using the supabase sql editor):
     CREATE TABLE IF NOT EXISTS users (
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
         email TEXT NOT NULL UNIQUE
