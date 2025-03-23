@@ -41,24 +41,26 @@ export default function Home() {
     }
   }
 
-  const handleKeyUp = (key) => {
-    if (key === 'Enter' && newTodo) {
+  const handleKeyUp = (e) => {
+    console.log(e.key, e.target.value)
+    if (e.key === 'Enter' && e.target.value) {
       const itemId = v4()
       
       const newItem = {
         id: itemId,
-        content: newTodo,
+        content: e.target.value,
         checked: false
       }
 
       setTodo(todo.concat(newItem))
-
       setNewTodo('')
 
       // insert into db
       if (auth.isAuth) {
-        const error = insertItem(itemId, auth.id, newTodo)
+        const error = insertItem(itemId, auth.id, e.target.value)
       }
+
+      e.target.value = ''
     }
   }
 
@@ -143,7 +145,7 @@ export default function Home() {
               <div className="inset-y-0 left-2 flex justify-end pl-3 pointer-events-none">
                 <svg className="relative top-9 right-6" width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 4C21.5128 4 21.9355 4.38604 21.9933 4.88338L22 5V11.5C22 13.3686 20.5357 14.8951 18.692 14.9948L18.5 15H5.415L8.70711 18.2929C9.06759 18.6534 9.09532 19.2206 8.7903 19.6129L8.70711 19.7071C8.34662 20.0676 7.77939 20.0953 7.3871 19.7903L7.29289 19.7071L2.29289 14.7071C2.2575 14.6717 2.22531 14.6343 2.19633 14.5953L2.12467 14.4841L2.07123 14.3713L2.03585 14.266L2.01102 14.1485L2.00398 14.0898L2 14L2.00279 13.9248L2.02024 13.7993L2.04974 13.6879L2.09367 13.5768L2.146 13.4793L2.2097 13.3871L2.29289 13.2929L7.29289 8.29289C7.68342 7.90237 8.31658 7.90237 8.70711 8.29289C9.06759 8.65338 9.09532 9.22061 8.7903 9.6129L8.70711 9.70711L5.415 13H18.5C19.2797 13 19.9204 12.4051 19.9931 11.6445L20 11.5V5C20 4.44772 20.4477 4 21 4Z" fill="#212121"/></svg>
               </div>
-              <input type="text" id="newTodo" value={newTodo} onChange={(e) => setNewTodo(e.target.value)} onKeyUp={(e) => handleKeyUp(e.key)} className="block w-full pl-4 pr-12 py-2 border-4 rounded-full bg-gray-600 text-white" placeholder="new todo item" />
+              <input type="text" id="newTodo" onKeyUp={(e) => handleKeyUp(e)} className="block w-full pl-4 pr-12 py-2 border-4 rounded-full bg-gray-600 text-white" placeholder="new todo item" />
             </div>
 
             <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -165,7 +167,7 @@ export default function Home() {
                               ref={draggableProvided.innerRef}
                             >
                               <li key={item.id} className="w-full border-2 rounded-xl mt-2 hover:border-blue-300">
-                                <input id={index} onClick={(e) => handleUpdate(item.id, e.target.checked)} type="checkbox" className="float-left block w-6 h-6 m-3" />
+                                <input id={index} checked={item.checked} onClick={(e) => handleUpdate(item.id, e.target.checked)} type="checkbox" className="float-left block w-6 h-6 m-3" />
                                 <button id={index} onClick={() => handleDelete(index, item.id)} className="float-right w-7 h-7 m-2.5 rounded-2xl bg-gray-700 text-gray-200 shadow-md hover:bg-gray-900 hover:scale-105">x</button>
                                 <label htmlFor={index} className="block w-full p-3 text-gray-800">{item.content}</label>
                               </li>
